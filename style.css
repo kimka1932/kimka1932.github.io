@@ -1,24 +1,80 @@
-p{
-    width: 400px;
-    background-color: brown;
-    display: inline-block;
+/* Flex container to align items in a row and wrap them */
+.menu-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 20px; /* Space between items */
+    padding: 20px; /* Padding around the container */
+    box-sizing: border-box; /* Ensures padding is included in width and height */
 }
-p:hover{
-    width: 400px;
-    background-color: burlywood;
+
+/* Container for each menu item */
+.menu-item {
+    position: relative; /* Required for absolute positioning of child elements */
+    background-color: black;
+    color: white;
+    border: 2px solid gray;
+    padding: 20px; /* Space inside each menu item */
+    box-sizing: border-box; /* Includes padding in width/height */
+    flex: 1 1 30%; /* Allows items to grow/shrink, with a basis of 30% */
+    min-width: 200px; /* Prevents collapsing */
+    border-radius: 8px; /* Optional: rounded corners */
 }
-@media (min-width: 320px) and (max-width: 600px) {
-    p{
-        width: 200px;
-        display: block;     
+/* Positioning level 2 heading in the top-right corner */
+.menu-heading {
+    position: absolute;
+    top: 0px; /* Distance from the top of the container */
+    right: 0px; /* Distance from the right edge of the container */
+    margin: 0; /* Remove default margin */
+    padding: 5px; /* Optional: padding around the text */
+    background-color: gray;
+    color: white; /* Text color */
+    height: 20px;
+}
+.b{
+    border: 0px solid transparent;
+}
+.full-width-item{
+    border: 2px solid gray;
+    border-radius: 9.5px;
+}
+h1{
+    text-align: center;
+    width: 100%;
+}
+/* Responsive adjustments for tablet view */
+@media (min-width: 768px) and (max-width: 991px){
+    .menu-container {
+        gap: 10px; /* Adjust space between items */
+        display: flex;
+        flex-wrap: wrap; /* Allows items to wrap to the next line */  
     }
-    p:hover{
-        width: 200px;
-        background-color: burlywood;
+
+    .menu-item {
+        flex: 1 1 45%; /* Adjust item width for tablets */
+    }
+
+    .full-width-item {
+        margin-top: 20px; /* Space above the full-width item */
+            flex: 1 100%; /* Ensures full width for this item */
+            background-color: black;
+            color: white;
+            padding: 20px; /* Space inside the item */
+            box-sizing: border-box; /* Includes padding in width/height */
+            margin-top: 20px; /* Space above the full-width item */
+            border-radius: 8px;
     }
 }
-@media (min-width: 601px) and (max-width: 799px){
-    p {
-        display: block;
-    }  
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+    .menu-item {
+        flex: 1 1 100%; /* Make items take full width on very small screens */
+        width: 100%;
+    }
+    .menu-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
 }
